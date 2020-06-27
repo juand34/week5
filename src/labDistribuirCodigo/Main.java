@@ -1,11 +1,19 @@
 package labDistribuirCodigo;
 
-/**
- * Main class of the Java program.
- * This code allows you to create different characters to be used in a simple
- * game.
- */
+import labDistribuirCodigo.game.characters.Character;
+import labDistribuirCodigo.game.characters.Explorer;
+import labDistribuirCodigo.game.characters.allies.*;
+import labDistribuirCodigo.game.characters.enemies.*;
+import labDistribuirCodigo.game.terrains.Maze;
+import labDistribuirCodigo.game.vehicles.Car;
 
+/**
+ * Main class of the Java program
+ * This code allows to create different objects (characters and cars)
+ * that explore and solve a Maze with different footprints.
+ * @author: uc3m
+ * @version: 1.0
+ */
 public class Main {
 
     public static void main(String[] args){
@@ -52,15 +60,9 @@ public class Main {
         Car myFerrari = new Car("Ferrari");
 
         System.out.println("All exploring: hero +, witch w, ghost g, vampire v, witchHunter W, ghostbuster G, vampireHunter V, ferrari c");
-        Explorer[] explorers = {heroJohn, witchMary, ghostGeorge, vampireFred,
+        Explorer [] explorers = {heroJohn, witchMary, ghostGeorge, vampireFred,
                 witchHunterEve,ghostBusterPeter, vampireHunterEddy, myFerrari};
         for(int i=0; i<explorers.length; i++){
-            /*
-            Character aux = new Character();
-            aux = (Character) explorers[i];
-            System.out.println("Soy " + aux.getName() + " jejeje");
-            */
-            System.out.println("Soy " + explorers[i].toString() + " jejeje");
             explorers[i].explore(sampleMaze);
 
         }

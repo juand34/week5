@@ -22,13 +22,7 @@ public class Car extends Vehicle {
      * @return the String representation of the car
      */
     public String toString() {
-        String state = "";
-        if (lights) {
-            state = "on";
-        } else {
-            state = "off";
-        }
-        String result = "This car is " + color + ", lights are " + state + ".";
+        String result = "This car is " + color + ", lights are " + stateLights() + ".";
         return result;
     }
 

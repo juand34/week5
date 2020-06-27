@@ -1,17 +1,22 @@
-package labDistribuirCodigo;
+package labDistribuirCodigo.game.terrains;
 
 /**
- * Main class of the Java program.
- * This code allows you to solve a maze recursively using backtracking algorithm.
- *
+ * This class model a generic maze that can be solved recursively
+ * using the backtracking algorithm.
+ * @author uc3m
+ * @version 1.0
  */
 import java.util.Arrays;
 
 public class Maze implements Cloneable{
-    // 0 - obstacle
-    // 1 - open space
-    // 2 - path taken
-    // 3 - goal
+    /**
+     * Constant to specify a bidimensional array that represents a  DEFAULT_MAZE
+     * using the following symbols:
+     * 0 - obstacle
+     * 1 - open space
+     * 2 - path taken
+     * 3 - goal
+     */
     private static int[][] DEFAULT_MAZE =
             {{0, 0, 1, 1, 1, 1, 1, 1},
                     {2, 0, 1, 0, 0, 0, 1, 1},
@@ -22,6 +27,7 @@ public class Maze implements Cloneable{
                     {1, 0, 1, 1, 1, 0, 0, 0},
                     {1, 1, 1, 0, 1, 1, 0, 0}};
 
+
     private int[][] maze;
 
     // use symbols to make reading the output easier...
@@ -31,13 +37,33 @@ public class Maze implements Cloneable{
     // 3 - goal - '*'
     private char[] mazeSymbols = {'#', '.', '+', '*' };
 
+    /**
+     * Construct a new Maze using the specified bidimensional array
+     * @param maze The bidimensional array of ints to be used as maze
+     */
     public Maze(int[][] maze){
         this.maze = maze;
     }
-
+    /**
+     * Construct a new Maze using the DEFAULT_MAZE =
+     {{0, 0, 1, 1, 1, 1, 1, 1},
+     {2, 0, 1, 0, 0, 0, 1, 1},
+     {1, 0, 1, 0, 0, 0, 0, 0},
+     {1, 1, 1, 0, 0, 0, 0, 0},
+     {0, 0, 1, 0, 1, 3, 1, 1},
+     {0, 0, 1, 0, 1, 0, 0, 1},
+     {1, 0, 1, 1, 1, 0, 0, 0},
+     {1, 1, 1, 0, 1, 1, 0, 0}};
+     */
     public Maze(){
         this(DEFAULT_MAZE);
     }
+
+
+    /**
+     * Method to create an return a copy of the current Maze
+     * @return: a Maze that represents the cloned Maze.
+     */
 
     public Maze clone(){
         int[][] clonedMaze = new int[maze.length][maze[0].length];
@@ -48,17 +74,24 @@ public class Maze implements Cloneable{
         return new Maze(clonedMaze);
     }
 
-    /* Another way to implement clone method using two loops
-    public Maze clone(){
-       int[][] clonedMaze = new int[maze.length][maze[0].length];
-       for(int i=0; i<maze.length; i++){
-           for (int j= 0; j< maze[i].length; j++){
-             clonedMaze[i][j] = maze[i][j];
-           }
-       }
-       return new Maze(clonedMaze);
-    }
-    */
+	/* Another way to implement clone method using two loops
+	public Maze clone(){
+	   int[][] clonedMaze = new int[maze.length][maze[0].length];
+	   for(int i=0; i<maze.length; i++){
+	       for (int j= 0; j< maze[i].length; j++){
+	         clonedMaze[i][j] = maze[i][j];
+	       }
+	   }
+	   return new Maze(clonedMaze);
+	}
+	*/
+    /**
+     * Method to find path from an specific position in the array trying all available
+     * neighbors.
+     * @param row int that represent the index of a row
+     * @param col int that represent the index of a column
+     * @return a boolean (true if a path have been finded and false if not).
+     */
     public boolean findPathFrom(int row, int col) {
 
         // when we reach the goal we have solved the problem
@@ -92,8 +125,16 @@ public class Maze implements Cloneable{
         return false;
     }
 
-    // A position is available if: (1) it is inside the bounds of the maze
-    // (2) if it is an open space or (3) it is the goal
+    /**
+     * Method to test if an specific position in the array is available.
+     * A position is available if:
+     * (1) it is inside the bounds of the maze
+     * (2) if it is an open space or
+     * (3) it is the goal
+     * @param row int that represent the index of a row
+     * @param col int that represent the index of a column
+     * @return True if specified position is available and false if it is not.
+     */
     private boolean isAvailablePosition(int row, int col) {
         boolean result =  row >= 0 && row < maze.length
                 && col >= 0 && col < maze[row].length
@@ -101,7 +142,13 @@ public class Maze implements Cloneable{
         return result;
     }
 
-    //print the output using MAZE_SYMBOLS
+    /**
+     * Method that prints an array with the maze output using the following MAZE_SYMBOLS:
+     * '#' - obstacle
+     * '.' - open space
+     * '+' path taken
+     * '*' goal.
+     */
     public void print(){
         for(int row = 0; row < maze.length; ++row) {
             for(int col = 0; col < maze[row].length; ++col) {
@@ -110,13 +157,24 @@ public class Maze implements Cloneable{
             System.out.println();
         }
     }
-
+    /**
+     * Method that prints an array with the maze output using the following MAZE_SYMBOLS:
+     * '#' - obstacle
+     * '.' - open space
+     * '*' goal.
+     * and using as path taken the footprint of the character.
+     * @param footprint The char to be used as footprint
+     */
     public void print(char footprint){
         setFootprint(footprint);
         print();
 
     }
 
+    /**
+     * Replaces the footprint with the specified value.
+     * @param footprint The char to be used as footprint
+     */
     private void setFootprint(char footprint){
         mazeSymbols[2] = footprint;
     }

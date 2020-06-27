@@ -76,4 +76,14 @@ public abstract class Vehicle {
     public void setLights(boolean l) {
         lights = l;
     }
+
+    public String stateLights() {
+        String state = "";
+        if (lights) {
+            state = "on";
+        } else {
+            state = "off";
+        }
+        return state;
+    }
 }

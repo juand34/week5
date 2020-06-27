@@ -23,13 +23,7 @@ public class Motorbike extends Vehicle {
      * @return the String representation of the motorbike
      */
     public String toString() {
-        String state = "";
-        if (lights) {
-            state = "on";
-        } else {
-            state = "off";
-        }
-        String result = "This motorbike is " + color + ", lights are " + state + ".";
+        String result = "This motorbike is " + color + ", lights are " + stateLights() + ".";
         return result;
     }
 

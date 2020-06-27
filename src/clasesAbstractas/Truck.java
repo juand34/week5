@@ -40,15 +40,27 @@ public class Truck extends Vehicle {
      * @return the String representation of the truck
      */
     public String toString() {
-        String state = "";
-        if (lights) {
-            state = "on";
-        } else {
-            state = "off";
-        }
-        String result1 = "This truck is " + color + ", lights are " + state;
+        String result1 = "This truck is " + color + ", lights are " + stateLights();
         String result2 = " and carries " + trailers + " trailers.";
         return result1 + result2;
+    }
+
+    /**
+     * Gets the number of trailers
+     *
+     * @return  the number of trailers of the truck
+     */
+    public int getTrailers(){
+        return trailers;
+    }
+
+    /**
+     * Sets the number of trailers color
+     *
+     * @param t  the number of trailers
+     */
+    public void setTrailers(int t){
+        trailers = t;
     }
 
 }
