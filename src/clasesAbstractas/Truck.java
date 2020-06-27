@@ -1,5 +1,7 @@
+package clasesAbstractas;
+
 /**
- * Truck class of the Java program.
+ * clasesAbstractas.Truck class of the Java program.
  */
 
 public class Truck extends Vehicle {

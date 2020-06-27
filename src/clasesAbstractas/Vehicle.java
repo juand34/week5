@@ -1,5 +1,7 @@
+package clasesAbstractas;
+
 /**
- * Vehicle class of the Java program.
+ * clasesAbstractas.Vehicle class of the Java program.
  */
 
 public abstract class Vehicle {

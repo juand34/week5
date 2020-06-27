@@ -1,5 +1,7 @@
+package clasesAbstractas;
+
 /**
- * Motorbike class of the Java program.
+ * clasesAbstractas.Motorbike class of the Java program.
  */
 
 public class Motorbike extends Vehicle {

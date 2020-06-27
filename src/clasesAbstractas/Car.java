@@ -1,5 +1,7 @@
+package clasesAbstractas;
+
 /**
- * Car class of the Java program.
+ * clasesAbstractas.Car class of the Java program.
  */
 
 public class Car extends Vehicle {

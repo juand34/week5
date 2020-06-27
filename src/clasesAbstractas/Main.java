@@ -1,5 +1,7 @@
+package clasesAbstractas;
+
 /**
- * Main class of the Java program.
+ * clasesAbstractas.Main class of the Java program.
  */
 
 public class Main {
