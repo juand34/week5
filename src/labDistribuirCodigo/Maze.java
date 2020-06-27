@@ -39,19 +39,26 @@ public class Maze implements Cloneable{
         this(DEFAULT_MAZE);
     }
 
-    /*Todo: change this method using only one loop
-     * and Arrays.copyOf(maze[i], maze[i].length)
-     */
     public Maze clone(){
         int[][] clonedMaze = new int[maze.length][maze[0].length];
+
         for(int i=0; i<maze.length; i++){
-            for (int j= 0; j< maze[i].length; j++){
-                clonedMaze[i][j] = maze[i][j];
-            }
+            clonedMaze[i] = Arrays.copyOf(maze[i], maze[i].length);
         }
         return new Maze(clonedMaze);
     }
 
+    /* Another way to implement clone method using two loops
+    public Maze clone(){
+       int[][] clonedMaze = new int[maze.length][maze[0].length];
+       for(int i=0; i<maze.length; i++){
+           for (int j= 0; j< maze[i].length; j++){
+             clonedMaze[i][j] = maze[i][j];
+           }
+       }
+       return new Maze(clonedMaze);
+    }
+    */
     public boolean findPathFrom(int row, int col) {
 
         // when we reach the goal we have solved the problem
@@ -79,7 +86,7 @@ public class Maze implements Cloneable{
         }
 
         //If none of previous positions is valid or matches the goal, it is necessary to revert the
-        //temporary state. This reversal or backtrack is what give name to the algorithm: backtracking
+        //temporary state. This reversal or backtrack is what gives name to the algorithm: backtracking
         maze[row][col] = 1;
 
         return false;
@@ -104,12 +111,12 @@ public class Maze implements Cloneable{
         }
     }
 
-
     public void print(char footprint){
         setFootprint(footprint);
         print();
 
     }
+
     private void setFootprint(char footprint){
         mazeSymbols[2] = footprint;
     }
